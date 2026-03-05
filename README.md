@@ -14,11 +14,7 @@
   </p>
 </div>
 
----
 
-<div align="center">
-  <img alt="Landing Page Hero Screenshot" src="public/landing-hero-screenshot.png" style="border-radius: 10px; max-width: 100%;" />
-</div>
 
 ## 📖 What is Apex Scholar?
 
@@ -27,17 +23,14 @@
 [Try the Live Demo Now →](https://apex-scholar.vercel.app)
 
 ## ✨ Why Researchers Love Apex Scholar
-
+- **Learn:** Learn about research related topic with AI-powered explanations and summaries.
 - **Unified Papers Search:** Query **ArXiv**, **Semantic Scholar**, **OpenAlex**, **Google Scholar**, and **PubMed** in one go.
 - **AI Knowledge Graphs:** Auto-generate interactive 2D force-directed graphs to spot research gaps instantly.
 - **Grant Management:** Track deadlines, budgets, and proposals with smart checklists.
 - **Smart Citations:** One-click citation generation for all your literature.
 - **Kanban Boards:** Drag-and-drop your lit review, analysis, and experiments.
 - **Secure Cloud Sync:** Encrypted backups keep your data safe across devices.
-
-<div align="center">
-  <img alt="Features Collage" src="public/features-collage.png" style="border-radius: 10px; max-width: 100%; margin: 20px 0;" />
-</div>
+- **Chat With File:** Upload your research papers and chat with them to get insights.
 
 ## 🚀 Ready to Supercharge Your Research?
 
@@ -47,6 +40,7 @@
 
 ## 🗺️ What's Coming Next
 
+- Latex workspace
 - Zotero/Mendeley sync
 - PDF annotation & RAG chat
 - Team collaboration
