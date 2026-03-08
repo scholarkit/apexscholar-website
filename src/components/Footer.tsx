@@ -28,7 +28,7 @@ export default function Footer() {
                         <div className="link-col">
                             <h4>Support</h4>
                             <a href="https://buymeacoffee.com/kywagle" target="_blank" rel="noopener noreferrer">Buy Me a Coffee</a>
-                            <a href="https://github.com/sathwik-14/apex-scholar.git" target="_blank" rel="noopener noreferrer">Contribute</a>
+                            <a href="https://github.com/scholarkit/apexscholar" target="_blank" rel="noopener noreferrer">Contribute</a>
                         </div>
                     </div>
                 </div>
