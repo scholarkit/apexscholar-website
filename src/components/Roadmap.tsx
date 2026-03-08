@@ -1,4 +1,4 @@
-import { ArrowRight, BookMarked, BrainCircuit, Users, Shield } from 'lucide-react';
+import { ArrowRight, BookMarked, BrainCircuit, Users } from 'lucide-react';
 
 const roadmapCategories = [
     {
@@ -30,16 +30,6 @@ const roadmapCategories = [
             "Export to PDF, Word, and LaTeX (.tex)",
             "Version history, rollback, and commenting",
             "AI writing assistant: sentence completions, grammar, research-aware suggestions"
-        ]
-    },
-    {
-        icon: <Shield size={20} />,
-        title: "Security & Privacy",
-        features: [
-            "End-to-end encryption (E2EE) for all cloud-synced data",
-            "Zero-knowledge architecture: server never sees your keys",
-            "Client-side AES-256-GCM encryption before storage",
-            "Encrypted backups and cross-device key sync"
         ]
     }
 ];
