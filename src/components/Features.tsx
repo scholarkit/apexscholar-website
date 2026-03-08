@@ -1,4 +1,4 @@
-import { BookOpen, Network, Briefcase, Quote, LayoutDashboard, Cloud } from 'lucide-react';
+import { BookOpen, Network, Briefcase, Quote, LayoutDashboard, Lock } from 'lucide-react';
 
 const features = [
     {
@@ -27,9 +27,9 @@ const features = [
         description: "A drag-and-drop integrated board to map out your literature review, analysis, and data collection phases."
     },
     {
-        icon: <Cloud size={24} />,
-        title: "Cloud Backup & Restore",
-        description: "Encrypted, secure storage via Puter.js integration ensuring your research data is always safe and scalable."
+        icon: <Lock size={24} />,
+        title: "End-to-End Encryption",
+        description: "Zero-knowledge security: your research data is encrypted client-side before storage. Only you hold the keys."
     }
 ];
 
