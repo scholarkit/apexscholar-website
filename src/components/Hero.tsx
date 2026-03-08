@@ -18,8 +18,8 @@ export default function Hero() {
                     <a href="https://apex-scholar.vercel.app" className="btn btn-primary" target="_blank" rel="noopener noreferrer">
                         Live Demo
                     </a>
-                    <a href="https://buymeacoffee.com/kywagle" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-                        Support Project
+                    <a href="https://apexscholar-docs.pages.dev" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                        Read the Docs
                     </a>
                 </div>
             </div>
