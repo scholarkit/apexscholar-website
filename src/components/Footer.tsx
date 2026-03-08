@@ -1,4 +1,4 @@
-import { Github } from 'lucide-react';
+import { Github, Heart } from 'lucide-react';
 
 export default function Footer() {
     return (
@@ -22,16 +22,19 @@ export default function Footer() {
                             <a href="#roadmap">Roadmap</a>
                         </div>
                         <div className="link-col">
-                            <h4>Resources</h4>
-                            <a href="https://apexscholar-docs.pages.dev" target="_blank" rel="noopener noreferrer">Documentation</a>
-                            <a href="https://buymeacoffee.com/kywagle" target="_blank" rel="noopener noreferrer">Buy Me A Coffee</a>
+                            <h4>Documentation</h4>
+                            <a href="https://apexscholar-docs.pages.dev" target="_blank" rel="noopener noreferrer">Read the Docs</a>
+                        </div>
+                        <div className="link-col">
+                            <h4>Support</h4>
+                            <a href="https://buymeacoffee.com/kywagle" target="_blank" rel="noopener noreferrer">Buy Me a Coffee</a>
                             <a href="https://github.com/sathwik-14/apex-scholar.git" target="_blank" rel="noopener noreferrer">Contribute</a>
                         </div>
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p>Built with ❤️ for the research community.</p>
-                    <p className="license-text">This project is open-source. Released under the respective License.</p>
+                    <p>Built with <Heart size={14} className="inline-icon" style={{ color: '#ef4444', verticalAlign: 'middle' }} /> for the research community.</p>
+                    <p className="license-text">This project is open-source. Released under the MIT License.</p>
                 </div>
             </div>
         </footer>
