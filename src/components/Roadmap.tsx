@@ -2,16 +2,6 @@ import { ArrowRight, BookMarked, BrainCircuit, Users, Check, Wrench } from 'luci
 
 const roadmapCategories = [
     {
-        icon: <Check size={20} />,
-        title: "Recently Completed",
-        features: [
-            "✅ Zotero integration: Connect and import references from your Zotero library.",
-            "✅ Mobile responsive: Full mobile experience (Composr module has room for improvement).",
-            "✅ LaTeX workflow: End-to-end working via GitHub Actions.",
-            "✅ Wrapper libraries: ai.ts, kv.ts, storage.ts, auth.ts for future service integrations."
-        ]
-    },
-    {
         icon: <BookMarked size={20} />,
         title: "Literature & Citation Management",
         features: [
@@ -68,7 +58,7 @@ export default function Roadmap() {
                         <div className="card-dark roadmap-card" key={idx}>
                             <div className="roadmap-card-header">
                                 {category.icon}
-                                <h3>{category.title}</h3>
+                                <p className="roadmap-title">{category.title}</p>
                             </div>
                             <ul className="roadmap-list">
                                 {category.features.map((feature, fIdx) => (

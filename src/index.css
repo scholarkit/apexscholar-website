@@ -108,7 +108,7 @@ button {
 }
 
 .section {
-  padding: 6rem 0;
+  padding: 3rem 0;
 }
 
 /* --- Hero Section & Buttons --- */
@@ -330,6 +330,11 @@ button {
   color: var(--text-main);
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 1rem;
+}
+
+.roadmap-title {
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .roadmap-list {
