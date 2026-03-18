@@ -1,4 +1,4 @@
-import { ArrowRight, BookMarked, BrainCircuit, Users, Check, Wrench } from 'lucide-react';
+import { ArrowRight, BookMarked, BrainCircuit, Users, Wrench } from 'lucide-react';
 
 const roadmapCategories = [
     {
