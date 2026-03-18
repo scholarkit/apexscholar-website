@@ -1,4 +1,4 @@
-import { Github, Heart } from 'lucide-react';
+import { Github, Heart, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animations';
 
@@ -19,6 +19,9 @@ export default function Footer() {
                         <div className="footer-socials">
                             <a href="https://github.com/sathwik-14/apex-scholar.git" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                                 <Github size={20} />
+                            </a>
+                            <a href="https://discord.gg/Qx6zghzsU" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                                <MessageCircle size={20} />
                             </a>
                         </div>
                     </motion.div>
