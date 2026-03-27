@@ -1,13 +1,14 @@
-import { Check, Zap, Users, Github } from 'lucide-react';
+import { Check, Zap, Users, Github, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animations';
+import { getDownloadUrl } from '../utils/osDetect';
 
 const tiers = [
     {
         icon: <Github size={24} />,
         name: "Open Source",
         price: "Free",
-        description: "Self-hosted, full control. Ideal for researchers who want to run their own instance.",
+        description: "Download the desktop app for macOS, Windows, and Linux. Self-hosted, full control. Ideal for researchers who want to run their own instance.",
         features: [
             "All core features",
             "Self-hosted deployment",
@@ -102,9 +103,16 @@ export default function Pricing() {
                                 ))}
                             </ul>
 
+                        {tier.name === "Open Source" ? (
+                            <a href={getDownloadUrl()} className={`btn btn-${tier.ctaVariant} pricing-cta`} target="_blank" rel="noopener noreferrer">
+                                <Download size={18} style={{ marginRight: '0.5rem' }} />
+                                {tier.cta}
+                            </a>
+                        ) : (
                             <button className={`btn btn-${tier.ctaVariant} pricing-cta`}>
                                 {tier.cta}
                             </button>
+                        )}
                         </motion.div>
                     ))}
                 </motion.div>

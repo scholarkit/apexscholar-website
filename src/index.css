@@ -173,6 +173,22 @@ button {
   justify-content: center;
 }
 
+/* Hide download button on mobile, show on larger screens */
+@media (max-width: 900px) {
+  .download-btn {
+    display: none;
+  }
+  .desktop-only {
+    display: none;
+  }
+}
+
+@media (min-width: 901px) {
+  .desktop-only {
+    display: block;
+  }
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
