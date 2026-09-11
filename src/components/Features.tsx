@@ -1,4 +1,4 @@
-import { BookOpen, Network, Briefcase, Quote, LayoutDashboard, Lock, Import } from 'lucide-react';
+import { BookOpen, Network, Briefcase, Quote, LayoutDashboard, Lock, Import, FileCode2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animations';
 
@@ -22,6 +22,11 @@ const features = [
         icon: <Quote size={24} />,
         title: "Citation Engine",
         description: "Quickly auto-generate correct, properly formatted citations for your saved literature without context switching."
+    },
+    {
+        icon: <FileCode2 size={24} />,
+        title: "TeX Compiler & Live Preview",
+        description: "Write and compile LaTeX documents in the cloud with zero local setup. Enjoy instant side-by-side PDF previews for publication-ready research papers."
     },
     {
         icon: <LayoutDashboard size={24} />,

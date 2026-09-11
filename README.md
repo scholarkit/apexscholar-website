@@ -26,6 +26,7 @@
 - **AI Knowledge Graphs:** Auto-generate interactive 2D force-directed graphs to spot research gaps instantly.
 - **Grant & Funding Tracker:** Track deadlines, budgets, and proposals with smart checklists.
 - **Citation Engine:** Quickly auto-generate correct, properly formatted citations for your saved literature.
+- **TeX Compiler & Live Preview:** Write and compile LaTeX documents in the cloud with zero local setup, featuring instant side-by-side PDF previews.
 - **Kanban Task Board:** A drag-and-drop integrated board to map out your literature review, analysis, and data collection phases.
 - **End-to-End Encryption:** Zero-knowledge security: your research data is encrypted client-side before storage. Only you hold the keys.
 - **Zotero Integration:** Connect your Zotero library to import references seamlessly. Manage connection in Settings > Integrations.
