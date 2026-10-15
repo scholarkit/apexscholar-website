@@ -1,8 +1,9 @@
 import './index.css';
 import Hero from './components/Hero';
-import Features from './components/Features';
-import Pricing from './components/Pricing';
 import Overview from './components/Overview';
+import Features from './components/Features';
+import SecurityArchitecture from './components/SecurityArchitecture';
+import Pricing from './components/Pricing';
 import Roadmap from './components/Roadmap';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       <Overview />
       <Features />
+      <SecurityArchitecture />
       <Pricing />
       <Roadmap />
       <FAQ />
@@ -22,3 +24,4 @@ function App() {
 }
 
 export default App;
+

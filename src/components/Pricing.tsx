@@ -1,68 +1,78 @@
-import { Check, Zap, Users, Github, Download } from 'lucide-react';
+import { Check, Github, Download, KeyRound, Server, Heart, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animations';
-import { getDownloadUrl } from '../utils/osDetect';
+import { getDownloadUrl, detectOS } from '../utils/osDetect';
 
 const tiers = [
     {
         icon: <Github size={24} />,
-        name: "Open Source",
-        price: "Free",
-        description: "Download the desktop app for macOS, Windows, and Linux. Self-hosted, full control. Ideal for researchers who want to run their own instance.",
+        name: "Open Source & Desktop",
+        badge: "Core App",
+        price: "$0",
+        period: "free forever",
+        description: "Full research workspace for individual scholars, PhD students, and postdocs. Run natively or in your browser.",
         features: [
-            "All core features",
-            "Self-hosted deployment",
-            "End-to-end encryption",
-            "Community support",
-            "You provide API keys",
-            "No usage limits"
+            "Full access to all core research modules",
+            "Local desktop app for macOS, Windows & Linux",
+            "Instant web workspace with IndexedDB caching",
+            "Unified search across ArXiv, PubMed, OpenAlex & Semantic Scholar",
+            "TeX editor with live side-by-side cloud PDF preview",
+            "Zotero reference library import & formatted citation engine",
+            "Client-side AES-256 encryption for synchronized vaults",
+            "Standard BibTeX and Markdown exports (zero lock-in)"
         ],
-        cta: "Download",
-        ctaVariant: "secondary",
-        popular: false
-    },
-    {
-        icon: <Zap size={24} />,
-        name: "Cloud Pro",
-        price: "$15",
-        period: "/month",
-        description: "Hosted service with premium support and generous limits. Best for individual researchers.",
-        features: [
-            "Everything in Open Source",
-            "50 GB encrypted storage",
-            "Unlimited AI queries",
-            "Zotero integration sync",
-            "Priority email support",
-            "Automatic updates",
-            "Citation engine",
-            "Grant tracker"
-        ],
-        cta: "Get Started",
+        cta: "Download Desktop App",
         ctaVariant: "primary",
+        isDownload: true,
         popular: true
     },
     {
-        icon: <Users size={24} />,
-        name: "Institutional",
-        price: "Custom",
-        description: "Enterprise-grade solution for universities, labs, and research organizations.",
+        icon: <KeyRound size={24} />,
+        name: "Bring Your Own Keys (BYOK)",
+        badge: "Optional Inference",
+        price: "$0",
+        period: "markup from us",
+        description: "Plug in your own API keys for AI synthesis and search. Pay only your provider's raw token costs.",
         features: [
-            "Everything in Cloud Pro",
-            "Team collaboration",
-            "SSO / SAML authentication",
-            "Admin console",
-            "Dedicated support",
-            "Custom integrations",
-            "Training & onboarding",
-            "Volume licensing"
+            "Connect OpenAI, Anthropic, or OpenRouter API keys",
+            "Connect SerpApi for Google Scholar search indexing",
+            "Support for local offline LLMs (via Ollama) with $0 API cost",
+            "Direct API terms: your research is not used for model training",
+            "Total token and prompt transparency before dispatch",
+            "Typical researcher expense: < $2/month on active literature reviews",
+            "No recurring subscriptions or minimum commitments"
         ],
-        cta: "Contact Sales",
+        cta: "Read API Key Setup Docs",
         ctaVariant: "secondary",
+        href: "https://apexscholar-docs.pages.dev",
+        popular: false
+    },
+    {
+        icon: <Server size={24} />,
+        name: "Lab & Self-Hosted",
+        badge: "Institutional",
+        price: "Free",
+        period: "MIT License",
+        description: "Deploy a private instance on your university department servers or laboratory infrastructure.",
+        features: [
+            "Complete data and network sovereignty for research groups",
+            "Containerized deployment via Docker and simple scripts",
+            "Custom domain & institutional authentication support",
+            "Compatible with campus networks and internal data policies",
+            "Full source code auditability under the MIT license",
+            "Community issue tracker and pull request contributions",
+            "Zero per-seat licensing fees"
+        ],
+        cta: "View GitHub Repository",
+        ctaVariant: "secondary",
+        href: "https://github.com/scholarkit/apexscholar",
         popular: false
     }
 ];
 
 export default function Pricing() {
+    const currentOS = detectOS();
+
     return (
         <motion.section
             className="section pricing"
@@ -74,22 +84,32 @@ export default function Pricing() {
         >
             <div className="container">
                 <motion.div variants={containerVariants} className="section-header">
-                    <motion.h2 variants={itemVariants} className="section-title">Simple, Transparent Pricing</motion.h2>
+                    <motion.div variants={itemVariants} className="section-badge">
+                        <Check size={16} /> Transparent Model
+                    </motion.div>
+                    <motion.h2 variants={itemVariants} className="section-title">
+                        Free, Open-Source & No Artificial Paywalls
+                    </motion.h2>
                     <motion.p variants={itemVariants} className="section-subtitle">
-                        Choose the plan that fits your research workflow. Start free, upgrade as you grow.
+                        Apex Scholar is built on open standards and the MIT license.
+                        We do not charge subscription fees for research productivity.
                     </motion.p>
                 </motion.div>
 
                 <motion.div variants={containerVariants} className="pricing-grid">
                     {tiers.map((tier, idx) => (
-                        <motion.div variants={itemVariants} className={`card-dark pricing-card ${tier.popular ? 'popular' : ''}`} key={idx}>
-                            {tier.popular && <span className="popular-badge">Most Popular</span>}
+                        <motion.div
+                            variants={itemVariants}
+                            className={`card-dark pricing-card ${tier.popular ? 'popular' : ''}`}
+                            key={idx}
+                        >
+                            {tier.popular && <span className="popular-badge">{tier.badge}</span>}
                             <div className="pricing-header">
                                 <div className="pricing-icon">{tier.icon}</div>
                                 <h3 className="pricing-name">{tier.name}</h3>
                                 <div className="pricing-price">
                                     <span className="price-amount">{tier.price}</span>
-                                    {tier.period && <span className="price-period">{tier.period}</span>}
+                                    {tier.period && <span className="price-period">/ {tier.period}</span>}
                                 </div>
                                 <p className="pricing-desc">{tier.description}</p>
                             </div>
@@ -103,24 +123,70 @@ export default function Pricing() {
                                 ))}
                             </ul>
 
-                        {tier.name === "Open Source" ? (
-                            <a href={getDownloadUrl()} className={`btn btn-${tier.ctaVariant} pricing-cta`} target="_blank" rel="noopener noreferrer">
-                                <Download size={18} style={{ marginRight: '0.5rem' }} />
-                                {tier.cta}
-                            </a>
-                        ) : (
-                            <button className={`btn btn-${tier.ctaVariant} pricing-cta`}>
-                                {tier.cta}
-                            </button>
-                        )}
+                            <div className="pricing-actions">
+                                {tier.isDownload ? (
+                                    <div className="cta-download-group">
+                                        <a
+                                            href={getDownloadUrl()}
+                                            className="btn btn-primary pricing-cta"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <Download size={18} style={{ marginRight: '0.5rem' }} />
+                                            {tier.cta} ({currentOS})
+                                        </a>
+                                        <a
+                                            href="https://apexscholar.vercel.app"
+                                            className="btn btn-secondary pricing-cta-sub"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Or Launch Web App
+                                        </a>
+                                    </div>
+                                ) : (
+                                    <a
+                                        href={tier.href}
+                                        className={`btn btn-${tier.ctaVariant} pricing-cta`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {tier.cta}
+                                        <ExternalLink size={16} style={{ marginLeft: '0.4rem' }} />
+                                    </a>
+                                )}
+                            </div>
                         </motion.div>
                     ))}
                 </motion.div>
 
-                <motion.p variants={itemVariants} className="pricing-note">
-                    All plans include end-to-end encryption. Need something different? <a href="mailto:contact@apexscholar.com">Let's talk</a>.
-                </motion.p>
+                {/* Sustainability and Cost Funding Disclosure */}
+                <motion.div variants={itemVariants} className="sustainability-box card-dark">
+                    <div className="sustainability-header">
+                        <Heart size={20} className="text-red" />
+                        <h3>How is Apex Scholar Funded & Sustained?</h3>
+                    </div>
+                    <p>
+                        A common question is how a modern platform with LaTeX compilation and unified search can operate without a paywall.
+                        Apex Scholar is built by researchers for researchers:
+                    </p>
+                    <ul className="sustainability-list">
+                        <li>
+                            <strong>Lean Client-First Compute:</strong> The web app runs client-side in your browser, and the desktop app runs locally on your computer. Your device handles data storage and indexing, keeping centralized infrastructure costs near zero.
+                        </li>
+                        <li>
+                            <strong>Free Upstream Scholarly APIs:</strong> Literature discovery queries ArXiv, OpenAlex, Semantic Scholar, and PubMed, which provide free open-access APIs for scholarly research.
+                        </li>
+                        <li>
+                            <strong>BYOK AI Model:</strong> Rather than charging a markup on LLM queries, users connect their own API accounts directly to providers, paying only raw fractions of a cent per prompt.
+                        </li>
+                        <li>
+                            <strong>Community & Sponsorships:</strong> Development is funded voluntarily through <a href="https://buymeacoffee.com/kywagle" target="_blank" rel="noopener noreferrer">Buy Me a Coffee</a>, GitHub Sponsors, and open-source contributions.
+                        </li>
+                    </ul>
+                </motion.div>
             </div>
         </motion.section>
     );
 }
+

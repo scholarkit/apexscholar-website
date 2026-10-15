@@ -1,47 +1,93 @@
-import { ArrowRight, BookMarked, BrainCircuit, Users, Wrench } from 'lucide-react';
+import { CheckCircle2, FlaskConical, Clock, ArrowRight, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animations';
 
-const roadmapCategories = [
+const roadmapPhases = [
     {
-        icon: <BookMarked size={20} />,
-        title: "Literature & Citation Management",
-        features: [
-            "Reference Syncing: Native integrations with Zotero, Mendeley, and EndNote.",
-            "PDF Workspace: Upload papers, highlight text, and link annotations.",
-            "Scopus Integration: Expand unified paper explorer sources.",
-            "Unified Search: Query ArXiv, Semantic Scholar, OpenAlex, Google Scholar, PubMed at once."
+        badge: "Available Now",
+        statusClass: "phase-available",
+        icon: <CheckCircle2 size={22} className="text-emerald" />,
+        title: "Production Capabilities",
+        description: "Implemented, tested, and actively usable in the current web and desktop builds.",
+        items: [
+            {
+                name: "Multi-Database Unified Search",
+                desc: "Simultaneous querying across ArXiv, Semantic Scholar, OpenAlex, PubMed, and Google Scholar."
+            },
+            {
+                name: "Cloud-Assisted TeX Live Preview",
+                desc: "Write LaTeX with instant side-by-side PDF preview via GitHub Actions compilation pipelines."
+            },
+            {
+                name: "Zotero Library Import",
+                desc: "One-way import of collections, items, and metadata via Zotero API tokens."
+            },
+            {
+                name: "Citation Formatter & Export",
+                desc: "Format and export in BibTeX, APA, MLA, Chicago, and IEEE styles without errors."
+            },
+            {
+                name: "Grant & Funding Tracker",
+                desc: "Manage proposal deadlines, compliance checklists, budget allocations, and notes."
+            },
+            {
+                name: "Local-First Kanban Task Board",
+                desc: "Multi-stage project tracking stored in IndexedDB with local session timers."
+            }
         ]
     },
     {
-        icon: <BrainCircuit size={20} />,
-        title: "Deep AI Integrations",
-        features: [
-            "Document Q&A (RAG): Chat with PDFs to summarize methodologies.",
-            "Auto-Extraction: AI-assisted extraction of tables and statistics.",
-            "Smart Recommendations: Context-aware literature discovery.",
-            "AI Knowledge Graphs: Visualize research gaps and connections."
+        badge: "Active Beta",
+        statusClass: "phase-beta",
+        icon: <FlaskConical size={22} className="text-indigo" />,
+        title: "Experimental & Refining",
+        description: "Functional features currently undergoing active user testing and algorithmic refinement.",
+        items: [
+            {
+                name: "2D Force-Directed Citation Graphs",
+                desc: "Interactive visualization of citation links and thematic clusters using Semantic Scholar/OpenAlex data."
+            },
+            {
+                name: "Source-Attributed AI Synthesis",
+                desc: "Abstract summarization preserving source DOIs and citation provenance using BYOK LLMs."
+            },
+            {
+                name: "Client-Side Encryption for Sync",
+                desc: "AES-256-GCM encryption with passphrase derivation (PBKDF2) for cloud storage sync."
+            },
+            {
+                name: "Native Desktop App Builds",
+                desc: "Cross-platform desktop distribution for macOS, Windows, and Linux with local file storage."
+            }
         ]
     },
     {
-        icon: <Users size={20} />,
-        title: "Collaboration & Editor",
-        features: [
-            "Real-time Collaborative Editor (Overleaf-style) with LaTeX support",
-            "Reference insertion from your library (APA, MLA, Chicago)",
-            "Export to PDF, Word, and LaTeX (.tex)",
-            "Version history, rollback, and commenting",
-            "AI writing assistant: sentence completions, grammar, research-aware suggestions"
-        ]
-    },
-    {
-        icon: <Wrench size={20} />,
-        title: "Planned Improvements",
-        features: [
-            "Composr module UI/UX enhancements for mobile.",
-            "Supabase integration using the new wrapper libraries.",
-            "Expand unified search to more sources.",
-            "Enhanced mobile navigation and responsive layouts."
+        badge: "In Development",
+        statusClass: "phase-planned",
+        icon: <Clock size={22} className="text-purple" />,
+        title: "Next Milestones",
+        description: "Architectural milestones currently scheduled or in prototype development.",
+        items: [
+            {
+                name: "Real-Time Collaborative Editor",
+                desc: "CRDT-based (Yjs) multi-author LaTeX and rich-text editing with inline citation insertion."
+            },
+            {
+                name: "Continuous Bi-Directional Zotero Sync",
+                desc: "Two-way live propagation of library edits and PDF attachments between Zotero and Apex Scholar."
+            },
+            {
+                name: "Offline Local LLM Support (Ollama)",
+                desc: "Run private, zero-cloud AI synthesis completely locally on consumer hardware."
+            },
+            {
+                name: "Secure Multi-Device Key Exchange",
+                desc: "QR code and device-pairing protocols to sync E2EE keys across phones and laptops safely."
+            },
+            {
+                name: "CrossRef & Scopus Integrations",
+                desc: "Broadening paper coverage to commercial citation indexes for institutional users."
+            }
         ]
     }
 ];
@@ -58,22 +104,40 @@ export default function Roadmap() {
         >
             <div className="container">
                 <motion.div variants={containerVariants} className="section-header">
-                    <motion.h2 variants={itemVariants} className="section-title">Roadmap</motion.h2>
-                    <motion.p variants={itemVariants} className="section-subtitle">We are constantly growing to meet the needs of the academic community.</motion.p>
+                    <motion.div variants={itemVariants} className="section-badge">
+                        <Layers size={16} /> Transparent Development
+                    </motion.div>
+                    <motion.h2 variants={itemVariants} className="section-title">
+                        Roadmap & Feature Maturity
+                    </motion.h2>
+                    <motion.p variants={itemVariants} className="section-subtitle">
+                        We believe researchers deserve absolute clarity on what works today versus what is currently in active development.
+                    </motion.p>
                 </motion.div>
 
-                <motion.div variants={containerVariants} className="roadmap-grid">
-                    {roadmapCategories.map((category, idx) => (
-                        <motion.div variants={itemVariants} className="card-dark roadmap-card" key={idx}>
-                            <div className="roadmap-card-header">
-                                {category.icon}
-                                <p className="roadmap-title">{category.title}</p>
+                <motion.div variants={containerVariants} className="roadmap-phase-grid">
+                    {roadmapPhases.map((phase, idx) => (
+                        <motion.div
+                            variants={itemVariants}
+                            className={`card-dark roadmap-phase-card ${phase.statusClass}`}
+                            key={idx}
+                        >
+                            <div className="phase-card-top">
+                                <div className="phase-icon-wrap">{phase.icon}</div>
+                                <span className={`phase-badge ${phase.statusClass}`}>{phase.badge}</span>
                             </div>
-                            <ul className="roadmap-list">
-                                {category.features.map((feature, fIdx) => (
-                                    <li key={fIdx}>
-                                        <ArrowRight size={14} className="list-icon" />
-                                        <span>{feature}</span>
+
+                            <h3 className="phase-title">{phase.title}</h3>
+                            <p className="phase-desc">{phase.description}</p>
+
+                            <ul className="phase-items-list">
+                                {phase.items.map((item, iIdx) => (
+                                    <li key={iIdx} className="phase-item">
+                                        <div className="phase-item-header">
+                                            <ArrowRight size={14} className="phase-item-arrow" />
+                                            <strong>{item.name}</strong>
+                                        </div>
+                                        <p className="phase-item-desc">{item.desc}</p>
                                     </li>
                                 ))}
                             </ul>
@@ -84,3 +148,4 @@ export default function Roadmap() {
         </motion.section>
     );
 }
+
